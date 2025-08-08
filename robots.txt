@@ -1,7 +1,0 @@
-User-agent: *
-Disallow: /private/
-Disallow: /tmp/
-Disallow: /admin/
-Allow: /
-
-Sitemap: https://fjchmb.github.io/BingSiteAuth.xml
