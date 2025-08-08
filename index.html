@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limbo虚拟机交流</title>
+    <style>
+        /* 基础样式 */
+        :root {
+            --primary-color: #5e72e4;
+            --secondary-color: #2dce89;
+            --dark-color: #32325d;
+            --light-color: #f7fafc;
+            --accent-color: #f5365c;
+            --text-color: #525f7f;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #825ee4);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav {
+            background: var(--dark-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul li a {
+            color: white;
+            padding: 1rem 1.5rem;
+            display: block;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 70%;
+        }
+        
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        h3 {
+            color: var(--dark-color);
+            margin: 1rem 0;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .download-section {
+            background: linear-gradient(135deg, #f7fafc, #e9ecef);
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
+        }
+        
+        article {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        label {
+            display: block;
+            margin: 1rem 0 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border 0.3s ease;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.2);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        button[type="submit"] {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            margin-top: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        button[type="submit"]:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
+        }
+        
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li a {
+                text-align: center;
+                padding: 1rem;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>欢迎来到Limbo虚拟机交流平台</h1>
+        <p>专业的虚拟机技术与资源分享</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">首页</a></li>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#services">服务</a></li>
+            <li><a href="#downloads">资源下载</a></li>
+            <li><a href="#contact">联系我们</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="home">
+            <h2>首页</h2>
+            <p>欢迎加入我们的Limbo虚拟机交流社区！</p>
+            <p>QQ群号: <span class="highlight">1030050711</span></p>
+            <p>在这里，您可以获取最新的虚拟机资源、技术支持和交流机会。</p>
+        </section>
+        
+        <section id="about">
+            <h2>关于我们</h2>
+            <p>我们是一个由虚拟机爱好者组成的社区，既有经验丰富的老手，也有刚刚入门的新人。</p>
+            <p>社区成立已有<span class="highlight">一年</span>时间，积累了丰富的技术资源和经验。</p>
+            <p>我们的目标是创建一个开放、友好的技术交流环境，帮助更多人掌握虚拟机技术。</p>
+        </section>
+        
+        <section id="services">
+            <h2>我们的服务</h2>
+            <article>
+                <h3>加入社区</h3>
+                <p>QQ群: <span class="highlight">1030050711</span></p>
+                <p>加入我们的QQ群，与志同道合的朋友一起交流学习。</p>
+            </article>
+            <article>
+                <h3>管理员联系方式</h3>
+                <p>我的QQ: <span class="highlight">1935507638</span></p>
+                <p>如需帮助或想成为群管理员，欢迎联系我。</p>
+            </article>
+        </section>
+        
+        <section id="downloads" class="download-section">
+            <h2>资源下载</h2>
+            <article>
+                <h3>Win10 VMDK镜像</h3>
+                <p>最新版本的Limbo虚拟机专用镜像文件需解压，访问码l4f5</p>
+                <a href="https://cloud.189.cn/t/eyAJJvuAbqai" class="download-btn" download>立即下载</a>
+            </article>
+            <article>
+                <h3>虚拟机软件</h3>
+                <p>Limbo虚拟机安装包，访问码kkk7</p>
+                <a href="https://cloud.189.cn/t/Zra2ymMrim6z" class="download-btn" download>立即下载</a>
+            </article>
+            <article>
+                <h3>常见问题解答</h3>
+                <p>Limbo虚拟机常见问题与解决方案合集，QQ加群找群主，群号:1030050711</p>
+                <a href="https://im.qq.com/immobile/index.html?_wv=1025" class="download-btn" download>下载QQ</a>
+            </article>
+        </section>
+        
+        <section id="contact">
+            <h2>联系我们</h2>
+            <form>
+                <label for="name">姓名：</label>
+                <input type="text" id="name" name="name" required placeholder="请输入您的姓名">
+                
+                <label for="email">邮箱：</label>
+                <input type="email" id="email" name="email" required placeholder="请输入您的邮箱地址">
+                
+                <label for="message">留言内容：</label>
+                <textarea id="message" name="message" required placeholder="请留下您的宝贵意见或问题..."></textarea>
+                
+                <button type="submit">提交留言</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 Limbo虚拟机交流社区. 保留所有权利.</p>
+        <p style="margin-top: 0.5rem;">技术支持：Limbo技术团队</p>
+    </footer>
+</body>
+</html>
+<style>
+<style>
+/* 替换原有body样式 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+/* 调整section样式 */
+section {
+    margin-bottom: 3rem;
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+</style>
