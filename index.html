@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Limbo虚拟机交流平台，提供安卓版Limbo下载、Win10精简镜像、全套教程与技术支持，解决闪退、黑屏、无网络问题，官方QQ群：1030050711。">
+
+<title>Limbo虚拟机 - 手机运行Windows｜最新镜像下载 官方QQ群：1030050711</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+/* 自动亮暗色切换 */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #ffffff;
+    --card: #f7f8fa;
+    --text: #1d2129;
+    --gray: #646572;
+    --border: #e5e6eb;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0e17;
+    --card: #121625;
+    --text: #e8e9ed;
+    --gray: #9199ad;
+    --border: #242a3d;
+  }
+}
+
+:root {
+  --accent: #4d7fff;
+  --gradient: linear-gradient(135deg, #4d7fff 0%, #7a5cff 100%);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* 导航 */
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 22px;
+  font-weight: 600;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.menu {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.menu a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 15px;
+}
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: var(--gradient);
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* 首屏 */
+.hero {
+  max-width: 900px;
+  margin: 70px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 16px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.hero p {
+  font-size: 18px;
+  color: var(--gray);
+  margin-bottom: 32px;
+}
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* 图片卡片 */
+.img-card {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* 布局 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 100px;
+}
+.section {
+  margin-bottom: 80px;
+}
+.section-title {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.section-desc {
+  text-align: center;
+  color: var(--gray);
+  margin-bottom: 48px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 32px 24px;
+  transition: 0.3s;
+  border: 1px solid var(--border);
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+.card p {
+  color: var(--gray);
+  margin-bottom: 16px;
+}
+.features {
+  padding-left: 20px;
+  color: var(--gray);
+}
+.features li {
+  margin-bottom: 8px;
+}
+
+/* 表单 */
+.form-box {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 48px;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+}
+.form-item {
+  margin-bottom: 24px;
+}
+.form-item label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+.form-item input,
+.form-item textarea {
+  width: 100%;
+  padding: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 15px;
+}
+.form-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--gradient);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* 底部 */
+.footer {
+  background: var(--card);
+  padding: 48px 20px;
+  text-align: center;
+  color: var(--gray);
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width:768px) {
+  .menu {display:none}
+  .hero h1 {font-size:32px}
+  .form-box {padding:24px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 导航 -->
+<div class="nav">
+<div class="logo">Limbo虚拟机</div>
+<ul class="menu">
+<li><a href="#home">首页</a></li>
+<li><a href="#func">功能</a></li>
+<li><a href="#down">下载</a></li>
+<li><a href="#contact">联系</a></li>
+</ul>
+<a href="#down" class="btn">立即下载</a>
+</div>
+
+<!-- 首屏 -->
+<div class="hero" id="home">
+<h1>真流畅·真免费·真好用</h1>
+<p>手机流畅运行Windows系统｜Limbo专业交流平台｜纯净镜像·一键安装·技术支持</p>
+<div class="hero-btns">
+<a href="mqqapi://card/show_pslcard?src_type=internal&version=1&uin=1030050711&card_type=group&source=qrcode" class="btn">💬 一键加入QQ群</a>
+<a href="#down" class="btn">获取镜像资源</a>
+</div>
+</div>
+
+<div class="container">
+
+<!-- 核心功能 -->
+<section class="section" id="func">
+<h2 class="section-title">核心功能</h2>
+<p class="section-desc">手机变电脑，随时随地办公、游戏、远程控制</p>
+<div class="grid">
+
+<div class="card">
+<img src="https://picsum.photos/id/1/600/200" class="img-card" alt="手机运行Windows">
+<h3>手机运行PC系统</h3>
+<p>安卓手机一键安装，直接运行Windows完整系统</p>
+<ul class="features">
+<li>超低延迟，操作跟手不卡顿</li>
+<li>支持键盘鼠标/游戏手柄</li>
+<li>高清画质，还原电脑体验</li>
+</ul>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/id/2/600/200" class="img-card" alt="移动办公">
+<h3>移动办公神器</h3>
+<p>随时随地处理文件、编辑文档、远程操作电脑</p>
+<ul class="features">
+<li>文件传输稳定高速</li>
+<li>多设备无缝同步</li>
+<li>出门无需携带电脑</li>
+</ul>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/id/3/600/200" class="img-card" alt="技术支持">
+<h3>新手技术支持</h3>
+<p>安装、配置、排错一站式服务，新手快速上手</p>
+<ul class="features">
+<li>群内一对一指导</li>
+<li>黑屏/闪退/无网络全解决</li>
+<li>全套教程免费领取</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<!-- 资源下载 -->
+<section class="section" id="down">
+<h2 class="section-title">资源下载中心</h2>
+<p class="section-desc">最新安装包、优化镜像、全套教程一键获取</p>
+<div class="grid">
+
+<div class="card">
+<img src="https://picsum.photos/id/180/600/200" class="img-card" alt="Limbo安装包">
+<h3>Limbo虚拟机安装包</h3>
+<p>稳定汉化版｜适配安卓手机｜访问码：kkk7</p>
+<a href="https://cloud.189.cn/t/Zra2ymMrim6z" target="_blank" class="btn">立即下载</a>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/id/160/600/200" class="img-card" alt="Win10镜像">
+<h3>Win10 VMDK专用镜像</h3>
+<p>优化精简版｜解压即用｜访问码：l4f5</p>
+<a href="https://cloud.189.cn/t/eyAJJvuAbqai" target="_blank" class="btn">立即下载</a>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/id/119/600/200" class="img-card" alt="教程合集">
+<h3>全套教程 + 问题解决</h3>
+<p>安装+配置+优化+排错，进群免费获取全套</p>
+<a href="mqqapi://card/show_pslcard?src_type=internal&version=1&uin=1030050711&card_type=group&source=qrcode" class="btn">一键加群</a>
+</div>
+
+</div>
+</section>
+
+<!-- 联系我们 -->
+<section class="section" id="contact">
+<h2 class="section-title">联系我们</h2>
+<p class="section-desc">提交问题或建议，邮件直接发送至管理员</p>
+<div class="form-box">
+<form action="https://formsubmit.co/2840126460@qq.com" method="POST">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_subject" value="Limbo虚拟机网站留言">
+
+<div class="form-item">
+<label>您的称呼</label>
+<input type="text" name="name" required placeholder="请输入您的称呼">
+</div>
+
+<div class="form-item">
+<label>您的邮箱</label>
+<input type="email" name="email" required placeholder="请输入您的联系邮箱">
+</div>
+
+<div class="form-item">
+<label>留言内容</label>
+<textarea name="message" required placeholder="请描述您遇到的问题、建议或需求"></textarea>
+</div>
+
+<button type="submit" class="form-btn">提交留言</button>
+</form>
+</div>
+</section>
+
+</div>
+
+<!-- 底部 -->
+<div class="footer">
+<p>© 2026 Limbo虚拟机交流平台 版权所有</p>
+<p style="margin-top:8px">官方QQ群：1030050711</p>
+</div>
+
+</body>
+</html>
